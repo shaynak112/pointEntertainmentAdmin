@@ -40,6 +40,14 @@
             </span>
           </a>
         </li>
+        <li>
+          <a href="guestlistsLexy.php">
+            <i class="fa fa-pencil"></i> <span>Guestlists for Lexy</span>
+            <span class="pull-right-container">
+              <!--<small class="label pull-right bg-green">new</small>-->
+            </span>
+          </a>
+        </li>
 
          <li class="treeview">
           <a href="#">
@@ -142,12 +150,8 @@
         </li>
         <li>
           <a href="pages/mailbox/mailbox.html">
-            <i class="fa fa-envelope"></i> <span>Mailbox</span>
-            <span class="pull-right-container">
-              <!--<small class="label pull-right bg-yellow">12</small>
-              <small class="label pull-right bg-green">16</small>
-              <small class="label pull-right bg-red">5</small>-->
-            </span>
+            <a href='https://maila13.webcontrolcenter.com/Login.aspx' target="_blank"><i class="fa fa-envelope"></i><span>Mailbox</span></a>
+            <span class="pull-right-container"></span>
           </a>
         </li>
 
