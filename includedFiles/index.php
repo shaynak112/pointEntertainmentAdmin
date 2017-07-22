@@ -107,7 +107,7 @@ include 'adminNav.php';
             <li>Approve User - doesn't work</li>
             <li>Admin Ideas - doesn't work</li>
             <li>Calendar - doesn't work</li>
-            <li>Mailbox - doesn't work</li>
+            <li style='color:red;'>Mailbox - will open in new tab for you to log in</li>
             <li style='color:red;'>Contact Info - works but need more info</li>
 
 
