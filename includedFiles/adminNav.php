@@ -27,44 +27,52 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="eventsAdd.php"><i class="fa fa-circle-o"></i>Add Event</a></li>
-            <li><a href="eventsUpdate.php"><i class="fa fa-circle-o"></i>Update Event</a></li>
+            <li><a href='eventsAdd.php'><i class='fa fa-circle-o'></i>Add Event</a></li>
+              <li><a href='eventsUpdate.php'><i class='fa fa-circle-o'></i>Update Event</a></li>
             <li><a href="eventsAll.php"><i class="fa fa-circle-o"></i>All Events</a></li>
           </ul>
         </li>
-        <li>
-          <a href="guestlists.php">
-            <i class="fa fa-pencil"></i> <span>Guestlists</span>
-            <span class="pull-right-container">
-              <!--<small class="label pull-right bg-green">new</small>-->
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="guestlistsLexy.php">
-            <i class="fa fa-pencil"></i> <span>Guestlists for Lexy</span>
-            <span class="pull-right-container">
-              <!--<small class="label pull-right bg-green">new</small>-->
-            </span>
-          </a>
-        </li>
 
-         <li class="treeview">
+        <li class="treeview">
           <a href="#">
-            <i class="fa fa-music"></i>
-            <span>Financials</span>
+            <i class="fa fa-pencil"></i>
+            <span>Guestlists</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="financeSummary.php"><i class="fa fa-circle-o"></i>Summary</a></li>
-            <li><a href="financeNew.php"><i class="fa fa-circle-o"></i>Add New Financials</a></li>
-            <li><a href="financeUpdate.php"><i class="fa fa-circle-o"></i>Update Financials</a></li>
+            <li><a href="GLAddToGuestlist.php"><i class="fa fa-circle-o"></i>Add To Guestlist</a></li>
+            <li><a href='GLAdminAddToGuestlist.php'><i class='fa fa-circle-o'></i>Admins Add To Guestlist</a></li>
+              <li><a href='GLguestlists.php'><i class='fa fa-circle-o'></i>Full Guestlist</a></li>
           </ul>
         </li>
 
-        
+        <li class='treeview'>
+          <a href='#'>
+            <i class='fa fa-music'></i>
+            <span>Financials</span>
+            <span class='pull-right-container'>
+              <i class='fa fa-angle-left pull-right'></i>
+            </span>
+          </a>
+          <ul class='treeview-menu'>
+            <li><a href='financeSummary.php'><i class='fa fa-circle-o'></i>Summary</a></li>
+            <li><a href='financeNew.php'><i class='fa fa-circle-o'></i>Add New Financials</a></li>
+            <li><a href='financeUpdate.php'><i class='fa fa-circle-o'></i>Update Financials</a></li>
+          </ul>
+        </li>
+
+
+        <li>
+          <a href="socialMedia.php">
+            <i class="fa fa-road"></i> <span>Social Media</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
+
+        <!--
         <li class="treeview">
           <a href="#">
             <i class="fa fa-camera"></i>
@@ -80,86 +88,88 @@
             <li><a href="pages/gallery/comments.php"><i class="fa fa-circle-o"></i>Review Comments</a></li>
             <li><a href="pages/gallery/links.php"><i class="fa fa-circle-o"></i>Update Gallery Links</a></li>
           </ul>
-        </li>
+        </li>-->
 
-         <li>
-          <a href="venues.php">
-            <i class="fa fa-plane"></i> <span>Venues</span>
-            <span class="pull-right-container">
-              <!--<small class="label pull-right bg-green">new</small>-->
-            </span>
-          </a>
-        </li>
-
-
-         <li>
-          <a href="partners.php">
-            <i class="fa fa-users"></i> <span>Partners</span>
-            <span class="pull-right-container">
-              <!--<small class="label pull-right bg-green">new</small>-->
-            </span>
-          </a>
-        </li>
-
-
-         <li>
-          <a href="otherEvents.php">
-            <i class="fa fa-ticket"></i> <span>Other Events</span>
-            <span class="pull-right-container">
-              <!--<small class="label pull-right bg-green">new</small>-->
+        <li>
+          <a href='otherEvents.php'>
+            <i class='fa fa-ticket'></i> <span>Other Events</span>
+            <span class='pull-right-container'>
             </span>
           </a>
         </li>
 
         <li>
-          <a href="subscribers.php">
-            <i class="fa fa-road"></i> <span>Subscribers</span>
-            <span class="pull-right-container">
-              <!--<small class="label pull-right bg-green">new</small>-->
+          <a href='contactInfo.php'>
+            <i class='fa fa-user'></i> <span>Contact Info</span>
+            <span class='pull-right-container'>
             </span>
           </a>
         </li>
 
          <li>
-          <a href="approveUser.php">
-            <i class="fa fa-user"></i> <span>Approve User</span>
-            <span class="pull-right-container">
-              <!--<small class="label pull-right bg-green">new</small>-->
+          <a href='venues.php'>
+            <i class='fa fa-plane'></i> <span>Venues</span>
+            <span class='pull-right-container'>
             </span>
           </a>
         </li>
 
+
          <li>
+          <a href='partners.php'>
+            <i class='fa fa-users'></i> <span>Partners</span>
+            <span class='pull-right-container'>
+            </span>
+          </a>
+        </li>
+
+        <li>
+          <a href='subscribers.php'>
+            <i class='fa fa-road'></i> <span>Subscribers</span>
+            <span class='pull-right-container'>
+            </span>
+          </a>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-user"></i>
+            <span>Accounts</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+                 
+            <li><a href="accountsApprove.php"><i class="fa fa-circle-o"></i>Approve Users</a></li>
+            <li><a href="accountsUpdate.php"><i class="fa fa-circle-o"></i>Update Users Permissions</a></li>
+            <li><a href="accountsView.php"><i class="fa fa-circle-o"></i>View Users</a></li>
+            
+          </ul>
+        </li>
+
+
+         <!--<li>
           <a href="adminIdeas.php">
             <i class="fa fa-user"></i> <span>Admin Ideas</span>
             <span class="pull-right-container">
-              <!--<small class="label pull-right bg-green">new</small>-->
+              <small class="label pull-right bg-green">new</small>
             </span>
           </a>
-        </li>
+        </li>-->
 
 
         <li>
-          <a href="pages/calendar.html">
-            <i class="fa fa-calendar"></i> <span>Calendar</span>
-            <span class="pull-right-container">
-              <!--<small class="label pull-right bg-red">3</small>
-              <small class="label pull-right bg-blue">17</small>-->
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="pages/mailbox/mailbox.html">
-            <a href='https://maila13.webcontrolcenter.com/Login.aspx' target="_blank"><i class="fa fa-envelope"></i><span>Mailbox</span></a>
+           <a href='https://maila13.webcontrolcenter.com/Login.aspx' target="_blank"><i class="fa fa-envelope"></i><span>Mailbox</span></a>
             <span class="pull-right-container"></span>
           </a>
         </li>
 
+
         <li>
-          <a href="contactInfo.php">
-            <i class="fa fa-user"></i> <span>Contact Info</span>
+          <a href="updateProfile.php">
+            <i class="fa fa-user"></i> <span>Update Profile</span>
             <span class="pull-right-container">
-              <!--<small class="label pull-right bg-green">new</small>-->
             </span>
           </a>
         </li>

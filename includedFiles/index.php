@@ -2,6 +2,8 @@
 
 <?php
 
+
+
 include 'header.php';
 include 'head.php';
 include 'adminNav.php';
@@ -31,15 +33,37 @@ include 'adminNav.php';
       <div class="row">
         <div class="col-lg-4 col-xs-12">
           <!-- small box -->
-          <div class="small-box bg-aqua">
+          <div class="small-box bg-black">
             <div class="inner">
-              <i class="f f-music"></i>
+              
               <h3>Next Event</h3>
 
-              <p>Let's Dance</p>
-              <p>June 2, 2017</p>
-              <a href="#">Guestlist</a><br/>
-              <a href="#">Facebook Event</a>
+                <?php
+
+                  $dbconn = new Dbconnect;
+                  $db = $dbconn->getDb();
+                  $query = "SELECT * FROM event WHERE status='future' ORDER BY date DESC LIMIT 1";
+                  $statement = $db->prepare($query);
+                  $statement->execute();
+                  $nextEvent = $statement->fetchAll(PDO::FETCH_OBJ);
+              ?>
+
+              <div>
+
+                  <?php
+                    foreach($nextEvent as $p)
+                    {
+                      echo "<p>" . $p->name . "</p>";
+                      echo "<p>" . $p->date . "</p>";
+                      echo "<p><a href='" . $p->facebookURL . "' target='_blank'>" . "Facebook Event" . "</p>";
+                      echo "<a href='GLAddToGuestlists.php'>Add To Guestlists</p>";
+
+                    }
+
+                  ?>
+
+              </div>
+
             </div>
             <!--<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>-->
           </div>
@@ -47,7 +71,7 @@ include 'adminNav.php';
         <!-- ./col -->
         <div class="col-lg-4 col-xs-12">
           <!-- small box -->
-          <div class="small-box bg-green">
+          <div class="small-box bg-red"'>
             <div class="inner">
               <h3>Facebook Update</h3>
 
@@ -61,7 +85,7 @@ include 'adminNav.php';
         
         <div class="col-lg-4 col-xs-12">
           <!-- small box -->
-          <div class="small-box bg-red">
+          <div class="small-box bg-black">
             <div class="inner">
               <h3>Approvals</h3>
 
@@ -93,10 +117,10 @@ include 'adminNav.php';
               <li>Update Event - does not work yet</li>
               <li style='color:red;'>All Events - does show  a list of all events; only thing that needs to be added is "more info" adding the guest list, same as above</li>
               </ul>
-            <li style='color:red;'>Guestlists - temporarily works for the 15th but, after the 15th, I'll make sure it works going forward based on date (just don't want to mess it up now).</li>
+            <li style='color:red;'>Guestlists - temporarily works for the 15th but, after the 15th, I'll make sure it works going forward based on date (just don't want to mess it up now). Note: haven't worked on this since</li>
             <ul>
-            <li style='color:red;'>Financial Overview - complete</li>
-            <li>Financials - Adding New (not ready)</li>
+            <li style='color:red;'>Financial Summary - complete</li>
+            <li>Financials - Adding New (not ready, error with form)</li>
             <li>Financials - Update (not ready)</li>
             </ul>
             <li>Gallery - not ready</li>
@@ -104,7 +128,8 @@ include 'adminNav.php';
             <li style='color:red;'>Partners - works</li>
             <li>Other Events - doesn't work</li>
             <li style='color:red;'>Subscribers - works</li>
-            <li>Approve User - doesn't work</li>
+            <li>Social Media - doesn't work</li>
+            <li style='color:red;'>Accounts - lists accounts of people who can log in once log in works fine, deactivated will be listed last. these are all just tests of course</li>
             <li>Admin Ideas - doesn't work</li>
             <li>Calendar - doesn't work</li>
             <li style='color:red;'>Mailbox - will open in new tab for you to log in</li>
@@ -113,120 +138,71 @@ include 'adminNav.php';
 
             </ul>
 
+            <h2>Homepage</h2>
+
+            <ul>
+            <li>Not 100% sure what to put here</li>
+            <li style='color:blue;'>Next event in top left; will include image</li>
+            <li>Middle, some sort of social media update with followers/likes or something like that</li>
+            <li>Still thinking on third one, could reduce to two</li>
+            <li>will focus on social media and upcoming events on homepage I think</li>
+            </ul>
+
            
 
           </div>
           <!-- /.nav-tabs-custom -->
 
-          <!-- Chat box -->
-          <div class="box box-success">
-            <div class="box-header">
-              <i class="fa fa-comments-o"></i>
-
-              <h3 class="box-title">Chat</h3>
-
-              <div class="box-tools pull-right" data-toggle="tooltip" title="Status">
-                <div class="btn-group" data-toggle="btn-toggle">
-                  <button type="button" class="btn btn-default btn-sm active"><i class="fa fa-square text-green"></i>
-                  </button>
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-square text-red"></i></button>
-                </div>
-              </div>
-            </div>
-            <div class="box-body chat" id="chat-box">
-             <h2>Admin Chat</h2>
-            </div>
-            <!-- /.chat -->
-          </div>
-          <!-- /.box (chat box) -->
 
         </section>
         <!-- /.Left col -->
         <!-- right col (We are only adding the ID to make the widgets sortable)-->
         <section class="col-lg-5 connectedSortable">
 
-          <!-- Map box -->
-          <div class="box box-solid bg-light-blue-gradient">
+         
+
+          <!-- Upcoming Events -->
+          <div class="box box-solid bg-black">
             <div class="box-header">
-              <!-- tools box -->
-              <div class="pull-right box-tools">
-                <button type="button" class="btn btn-primary btn-sm daterange pull-right" data-toggle="tooltip"
-                        title="Date range">
-                  <i class="fa fa-calendar"></i></button>
-                <button type="button" class="btn btn-primary btn-sm pull-right" data-widget="collapse"
-                        data-toggle="tooltip" title="Collapse" style="margin-right: 5px;">
-                  <i class="fa fa-minus"></i></button>
+              <h2 style='font-color:white;padding-bottom:20px;'>Upcoming Events</h2>              
+
+                <?php
+
+                  $dbconn = new Dbconnect;
+                  $db = $dbconn->getDb();
+                  $query = "SELECT * FROM event WHERE status='future' ORDER BY date DESC";
+                  $statement = $db->prepare($query);
+                  $statement->execute();
+                  $newEvents = $statement->fetchAll(PDO::FETCH_OBJ);
+              ?>
+
+              <div>
+                <table>
+                  <tr>
+                  <th>Event</th>
+                  <th style='padding-left:15%;'>Date</th>
+                  <th style='padding-left:15%;'>URL</th>
+                  </tr>
+
+                  <?php
+                    foreach($newEvents as $p)
+                    {
+                      echo "<tr>";
+                      echo "<td>" . $p->name . "</td>";
+                      echo "<td style='padding-left:15%;'>" . $p->date . "</td>";
+                      echo "<td style='padding-left:15%;'><a href='" . $p->facebookURL . "' target='_blank'>" . "Link" . "</td>";
+                      echo "</tr>";
+                    }
+
+                  ?>
+
+                </table>
               </div>
-              <!-- /. tools -->
+            
 
-              <i class="fa fa-map-marker"></i>
-
-              <h3 class="box-title">
-                Visitors
-              </h3>
-            </div>
-            <div class="box-body">
-              <div id="world-map" style="height: 250px; width: 100%;"></div>
-            </div>
-            <!-- /.box-body-->
-            <div class="box-footer no-border">
-              <div class="row">
-                <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                  <div id="sparkline-1"></div>
-                  <div class="knob-label">Visitors</div>
-                </div>
-                <!-- ./col -->
-                <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                  <div id="sparkline-2"></div>
-                  <div class="knob-label">Online</div>
-                </div>
-                <!-- ./col -->
-                <div class="col-xs-4 text-center">
-                  <div id="sparkline-3"></div>
-                  <div class="knob-label">Exists</div>
-                </div>
-                <!-- ./col -->
-              </div>
-              <!-- /.row -->
-            </div>
-          </div>
-          <!-- /.box -->
-
-          <!-- solid sales graph -->
-          
-
-          <!-- Calendar -->
-          <div class="box box-solid bg-green-gradient">
-            <div class="box-header">
-              <i class="fa fa-calendar"></i>
-
-              <h3 class="box-title">Calendar</h3>
-              <!-- tools box -->
-              <div class="pull-right box-tools">
-                <!-- button with a dropdown -->
-                <div class="btn-group">
-                  <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-bars"></i></button>
-                  <ul class="dropdown-menu pull-right" role="menu">
-                    <li><a href="#">Add new event</a></li>
-                    <li><a href="#">Clear events</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">View calendar</a></li>
-                  </ul>
-                </div>
-                <button type="button" class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-success btn-sm" data-widget="remove"><i class="fa fa-times"></i>
-                </button>
-              </div>
-              <!-- /. tools -->
             </div>
             <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <!--The calendar -->
-              <div id="calendar" style="width: 100%"></div>
-            </div>
-            <!-- /.box-body -->
+
  
           </div>
           <!-- /.box -->
