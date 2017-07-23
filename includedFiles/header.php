@@ -1,5 +1,9 @@
 <?php
 
+?>
+
+<?php
+
 include 'dbConnect.php';
 
 ?>
