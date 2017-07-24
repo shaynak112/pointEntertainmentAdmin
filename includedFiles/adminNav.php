@@ -9,7 +9,7 @@
         </div>
         <div class="pull-left info">
           <a href='index.php'><p>Lexy Esposito</p>
-          <p>Admin</p></a>
+          <p>Assistant</p></a>
         </div>
       </div>
 
@@ -17,6 +17,15 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Navigation</li>
         
+
+       <li>
+          <a href='pagesUpdate.php'>
+            <i class='fa fa-user'></i> <span>Update On Pages</span>
+            <span class='pull-right-container'>
+            </span>
+          </a>
+        </li>
+
         
         <li class="treeview">
           <a href="#">
@@ -141,8 +150,8 @@
           </a>
           <ul class="treeview-menu">
                  
-            <li><a href="accountsApprove.php"><i class="fa fa-circle-o"></i>Approve Users</a></li>
-            <li><a href="accountsUpdate.php"><i class="fa fa-circle-o"></i>Update Users Permissions</a></li>
+            <!--<li><a href="accountsApprove.php"><i class="fa fa-circle-o"></i>Approve Users</a></li>
+            <li><a href="accountsUpdate.php"><i class="fa fa-circle-o"></i>Update Users Permissions</a></li>-->
             <li><a href="accountsView.php"><i class="fa fa-circle-o"></i>View Users</a></li>
             
           </ul>
