@@ -60,7 +60,9 @@ include 'adminNav.php';
 
 <h3>Image</h3>
 
-<?php echo "<img src='eventViewerImg.php?id=" . $singleEvent['id'] . "' style='width:50%;display:inline-block;'>"; ?>
+<?php echo "<img src='eventPicViewerImg.php?id=" . $singleEvent['id'] . "' style='width:50%;display:inline-block;'>"; ?>
+
+
 
 <br/>
 
