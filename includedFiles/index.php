@@ -1,17 +1,11 @@
-   
-
 <?php
-
-
-
 include 'header.php';
 include 'head.php';
 include 'adminNav.php';
-
 ?>
 
 
-<script type='text/javascript' src="testLoginScript.js"></script>
+<!--<script type='text/javascript' src="testLoginScript.js"></script>-->
 
      
   <!-- Content Wrapper. Contains page content -->
@@ -40,7 +34,7 @@ include 'adminNav.php';
 
                 <div><a target='_blank' href='https://www.facebook.com/pointentertainmenttoronto/'><img src='images/facebook.jpg' style='width:7%;margin-right:7%;'></a>
                 <a target='_blank' href='https://www.instagram.com/pointentto/'><img src='images/instagram.png' style='width:7%;margin-right:7%;'></a>
-                <a target='_blank' href='https://twitter.com/dj_thien'><img src='images/twitter.jpg' style='width:7%;'></a></div>
+                <a target='_blank' href='https://twitter.com/pointEntTO'><img src='images/twitter.jpg' style='width:7%;'></a></div>
 
               <h4 style='padding-bottom:10px;padding-top:20px;'>Public Page</h4>
 
@@ -111,7 +105,7 @@ include 'adminNav.php';
       <!-- Main row -->
       <div class="row">
         <!-- Left col -->
-        <section class="col-lg-7 connectedSortable">
+        <section class="col-lg-7 connectedSortable" bg-black">
         <div class="box box-solid bg-black" style='font-color:white;vertical-align:top;margin-left:2%;height:350px;'>
 
         <h2 style='margin-bottom:0px;padding-top:10px;margin-left:30%;'>Next Event</h2>
@@ -148,11 +142,19 @@ include 'adminNav.php';
               echo "<div class='col-lg-6 bg-black'>";//<!--right side-->
               echo "<br/>";
                echo "<p><a href='" . $p->facebookURL . "' target='_blank'>" . "Facebook Event" . "</p>";
-                      echo "<p><a href='GLAddToGuestlist.php'>Add To Guestlist</p>";
+               echo "<br/>";
+                      echo "<p><a href='GLAddToGuestlist.php'>Add To Guestlist</a></p>";
                        
-              echo "<img src='testUmbrella.jpg' style='width:70%;'>";
-
-                                  }
+              echo "<br/>";
+              echo "<div><img src='eventPicViewerImg.php?id=" . $p->id . "' style='width:100%;display:inline-block;'></div>";
+              echo "<br/>";
+              echo "<br/>";
+              echo "<br/>";
+              echo "<br/>";                                  }
+              echo "<br/>";
+              echo "<br/>";
+              echo "<br/>";
+              echo "<br/>";
 
                   ?>
 
@@ -176,7 +178,7 @@ include 'adminNav.php';
 
                   $dbconn = new Dbconnect;
                   $db = $dbconn->getDb();
-                  $query = "SELECT * FROM event WHERE status='future' ORDER BY date DESC";
+                  $query = "SELECT * FROM event WHERE status='future' ORDER BY date ASC";
                   $statement = $db->prepare($query);
                   $statement->execute();
                   $newEvents = $statement->fetchAll(PDO::FETCH_OBJ);
@@ -205,7 +207,8 @@ include 'adminNav.php';
                 </table>
               </div>
             
-
+              <br/>
+              <br/>
             </div>
             <!-- /.box-header -->
 
@@ -237,4 +240,3 @@ include 'adminNav.php';
 include 'footer.php';
 
 ?>
-
