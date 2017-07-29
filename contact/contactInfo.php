@@ -1,12 +1,10 @@
 <?php
-
 include 'header.php';
 include 'head.php';
 include 'adminNav.php';
-
 ?>
 
-<script type='text/javascript' src="testLoginScript.js"></script>
+<!--<script type='text/javascript' src="testLoginScript.js"></script>-->
 
 
   <!-- Content Wrapper. Contains page content -->
@@ -22,10 +20,11 @@ include 'adminNav.php';
 
     $dbconn = new Dbconnect;
     $db = $dbconn->getDb();
-    $query = "SELECT * FROM contactInfo ORDER BY role ASC, firstName ASC, lastName ASC";
+    $query = "SELECT * FROM login ORDER BY role ASC, firstName ASC, lastName ASC";
     $statement = $db->prepare($query);
     $statement->execute();
-    $contacts = $statement->fetchAll(PDO::FETCH_OBJ);
+    $login = $statement->fetchAll(PDO::FETCH_OBJ);
+    //$increment=1;
 
 ?>
 
@@ -35,7 +34,8 @@ include 'adminNav.php';
 
 <table>
 	<tr>
-	<th style='width:3%;'>First Name</th>
+	<th style='padding-left:3%;width:5%;'>Picture</th>
+	<th style='padding-left:3%;width:3%;'>First Name</th>
 	<th style='padding-left:3%;width:3%;'>Last Name</th>
 	<th style='padding-left:3%;width:3%;'>Other Name</th>
 	<th style='padding-left:3%;width:3%;'>Role</th>
@@ -43,10 +43,11 @@ include 'adminNav.php';
 	</tr>
 
 	<?php
-		foreach($contacts as $s)
+		foreach($login as $s)
 		{
 			echo "<tr>";
-			echo "<td>" . $s->firstName . "</td>";
+			echo "<td><img src='userPicViewerImg.php?id={$s->id}' style='height:20px;padding-left:3%;top:0px;display:inline-block;margin-top:0px;'></a></td>";
+			echo "<td style='padding-left:3%;''>" . $s->firstName . "</td>";
 			echo "<td style='padding-left:3%;'>" . $s->lastName . "</td>";
 			echo "<td style='padding-left:3%;'>" . $s->otherName . "</td>";
 			echo "<td style='padding-left:3%;'>" . $s->role . "</td>";
