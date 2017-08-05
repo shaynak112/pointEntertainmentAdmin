@@ -184,7 +184,6 @@ include 'adminNav.php';
 	<th style='padding-left:2%;'>ID</th>
   <th style='padding-left:5%;'>URL</th>
   <th style='padding-left:7%;'>Featured</th>
-  <th style='padding-left:7%;'>Image</th>
 	</tr>
 
 	<?php
@@ -196,7 +195,6 @@ include 'adminNav.php';
       echo "<td style='padding-left:2%;'>" . $p->id . "</td>";
 			echo "<td style='padding-left:5%;'><a href='" . $p->venueURL . "' target='_blank'>" . "Link" . "</td>";
       echo "<td style='padding-left:7%;'>" . $p->venueFeatured . "</td>";
-      echo "<td style='width:10%;padding-left:7%;'><img src='venueViewerImg.php?id=" . $p->id . "' style='width:100%;'></td>";
 			echo "</tr>";
 		}
 
