@@ -21,7 +21,7 @@ include 'adminNav.php';
     $dbconn = new Dbconnect;
     $db = $dbconn->getDb();
     $id = $_GET['id'];
-    $query = 'SELECT * FROM contactInfo WHERE id = ' . $id;
+    $query = 'SELECT * FROM login WHERE id = ' . $id;
     $statement = $db->prepare($query);
     $statement->bindValue(':id', $id, PDO::PARAM_INT);
     $statement->execute();
@@ -29,7 +29,7 @@ include 'adminNav.php';
 
 ?>
 
-<h1><?php echo $oneContact['firstName'] . " " . $oneContact['lastName']; ?></h1>
+<h1><?php echo $oneContact['firstName'] . " " . $oneContact['lastName'] . " (" . $oneContact['otherName'] . ")"; ?></h1>
 
 <h2>Contact Information</h2>
 
@@ -37,7 +37,7 @@ include 'adminNav.php';
 
 <div>
 <strong>Phone Numbers</strong>
-<div><?php echo $oneContact['phone']; ?></div>
+<div><?php echo $oneContact['phone1']; ?></div>
 <div><?php echo $oneContact['phone2']; ?></div>
 </div>
 
@@ -45,8 +45,40 @@ include 'adminNav.php';
 
 <div>
 <strong>Email</strong>
-<div><?php echo $oneContact['email']; ?></div>
+<div><?php echo $oneContact['email1']; ?></div>
 <div><?php echo $oneContact['email2']; ?></div>
+</div>
+
+
+<br/>
+
+<div>
+
+<?php
+
+       if($row['role']='DJ')
+    {
+        ?>
+        <strong>DJ Info</strong>
+        <?php
+        echo "<div>Genre: " . $oneContact['DJGenre'] . "</div>";
+        echo "<div>Min (or firm) Price: " . $oneContact['DJPriceMin'] . "</div>";
+        echo "<div>Max Price: " . $oneContact['DJPriceMax'] . "</div>";
+
+    }
+
+
+/*Idea:
+    if(point.role='DJ')
+    {
+        echo "<div>Genre: <?php echo $oneContact['DJGenre']; ?></div>";
+        echo "<div>Min (or firm) Price: <?php echo $oneContact['DJPriceMin']; ?></div>";
+        echo "<div>Max Price: <?php echo $oneContact['DJPriceMax']; ?></div>";
+
+    }*/
+
+?>
+
 </div>
 
 <br/>
@@ -58,6 +90,14 @@ include 'adminNav.php';
     echo "<a target='_blank' href=" . $oneContact['FBProfile'] . ">" . "Profile: " . $oneContact['FBProfile'] . "</a>";
 ?>
 </div>
+</div>
+
+<br/>
+<br/>
+
+<div style='width:50%;'><strong>
+Placeholder image</strong>
+<img src='ben.jpg' style='width:80%;margin-left:0%;'/>
 </div>
 
 
