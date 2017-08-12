@@ -32,7 +32,7 @@ include 'adminNav.php';
 
 <h1> <?php echo $singleEvent['name']; ?> </h1>
 
-<div><strong>Date: </strong> <?php echo $singleEvent['date']; ?> </div>
+<div><strong>Date: </strong> <?php echo $singleEvent['eventDate']; ?> </div>
 <div><strong>Venue: </strong> <?php echo $singleEvent['venue']; ?> </div>
 <div><strong>Status: </strong> <?php echo $singleEvent['status']; ?> </div>
 <div><strong>Guestlist: </strong> <?php echo $singleEvent['guestlist']; ?> </div>

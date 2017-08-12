@@ -39,7 +39,7 @@ include 'adminNav.php';
 
       <label>Status</label>
       <div class="radio">
-      <label><input type="radio" name="future">Publish</label>
+      <label><input type="radio" name='updateFuture' value="future">Publish</label>
       </div>
 
       <br/>
@@ -62,7 +62,7 @@ include 'adminNav.php';
         //$val = new Validate();
           
         $eventID = $_POST['eventID'];
-        $eventStatus = $_POST['radio'];
+        $eventStatus = $_POST['updateFuture'];
 
 
         /*validate
@@ -71,7 +71,7 @@ include 'adminNav.php';
 
     
     //database query
-        $query1 = "UPDATE event SET status='future' WHERE id=:eventID";
+        $query1 = "UPDATE event SET status='future' WHERE id=$eventID";
 
       $statement1 = $db1->prepare($query1);
 
@@ -125,7 +125,7 @@ include 'adminNav.php';
 		{
 			echo "<tr>";
       echo "<td>" . $p->id . "</td>";
-      echo "<td>" . $p->date . "</td>";
+      echo "<td>" . $p->eventDate . "</td>";
 			echo "<td>" . $p->name . "</td>";
 			echo "<td><a href='" . $p->facebookURL . "' target='_blank'>" . $p->facebookURL . "</td>";
       echo "<td>" . $p->venue . "</td>";
