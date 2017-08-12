@@ -8,7 +8,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <a href='index.php'><p>Lexy Esposito</p>
+          <a href='home.php'><p>Lexy Esposito</p>
           <p>Assistant</p></a>
         </div>
       </div>
@@ -18,11 +18,17 @@
         <li class="header">Navigation</li>
         
 
-       <li>
+      <li>
           <a href='pagesUpdate.php'>
             <i class='fa fa-user'></i> <span>Update On Pages</span>
             <span class='pull-right-container'>
             </span>
+          </a>
+        </li>
+
+       <li>
+           <a href='https://maila13.webcontrolcenter.com/Login.aspx' target="_blank"><i class="fa fa-envelope"></i><span>Mailbox</span></a>
+            <span class="pull-right-container"></span>
           </a>
         </li>
 
@@ -134,7 +140,7 @@
 
         <li>
           <a href='subscribers.php'>
-            <i class='fa fa-road'></i> <span>Subscribers</span>
+            <i class='fa fa-road'></i> <span>Newsletter</span>
             <span class='pull-right-container'>
             </span>
           </a>
@@ -168,11 +174,7 @@
         </li>-->
 
 
-        <li>
-           <a href='https://maila13.webcontrolcenter.com/Login.aspx' target="_blank"><i class="fa fa-envelope"></i><span>Mailbox</span></a>
-            <span class="pull-right-container"></span>
-          </a>
-        </li>
+
 
 
         <li>
