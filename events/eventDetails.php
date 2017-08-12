@@ -103,20 +103,44 @@ include 'adminNav.php';
 
 ?>
 
-<p>will list guestlist here</p>
+<?php
+    $dbconn1 = new Dbconnect;
+    $db1 = $dbconn1->getDb();
+    $eventIDGL = $_GET['id'];
+    $query1 = "SELECT id, eventID, promoter, guestName, plus FROM guestlist WHERE eventID=$eventIDGL ORDER BY guestName ASC";
+    $statement1 = $db1->prepare($query1);
+    $statement1->execute();
+    $thisEvent = $statement1->fetchAll(PDO::FETCH_OBJ);
 
-<table>
+    ?>
 
-	<tr>
-		<th>Name</th>
+<div id='GLTableDiv' style='width:30%;margin-left:10%;'>
+
+<table style='width:100%;padding:3px;border-spacing:10px;'>
+
+	<tr style='text-align:right;'>
+		<th style='text-align:right;padding-right:3%;'>Name</th>
 		<th>Guests</th>
-		<th>Email</th>
+		<th>Promoter</th>
 	</tr>
+
+    <?php
+        foreach($thisEvent as $z)
+        {
+            echo "<tr style='border-bottom:2px solid black;'>";
+            echo "<td style='padding:3px;padding-right:3%;text-align:right;'>" . $z->guestName . "</td>";
+            echo "<td style='padding:3px;'>" . " + " . $z->plus . "</td>";
+            echo "<td style='padding:3px;'>" . $z->promoter . "</td>";
+            echo "</tr>";
+        }
+
+    ?>
 
 
 </table>
 
 
+</div><!--end of table div-->
 
 </div><!--first col-lg eventDescriptionPage-->
 </div><!--row-->
