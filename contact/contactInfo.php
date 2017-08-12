@@ -34,7 +34,7 @@ include 'adminNav.php';
 
 <table>
 	<tr>
-	<th style='padding-left:3%;width:5%;'>Picture</th>
+	<!--<th style='padding-left:3%;width:5%;'>Picture</th>-->
 	<th style='padding-left:3%;width:3%;'>First Name</th>
 	<th style='padding-left:3%;width:3%;'>Last Name</th>
 	<th style='padding-left:3%;width:3%;'>Other Name</th>
@@ -46,7 +46,7 @@ include 'adminNav.php';
 		foreach($login as $s)
 		{
 			echo "<tr>";
-			echo "<td><img src='userPicViewerImg.php?id={$s->id}' style='height:20px;padding-left:3%;top:0px;display:inline-block;margin-top:0px;'></a></td>";
+			/*echo "<td><img src='userPicViewerImg.php?id={$s->id}' style='height:20px;padding-left:3%;top:0px;display:inline-block;margin-top:0px;'></a></td>";*/
 			echo "<td style='padding-left:3%;''>" . $s->firstName . "</td>";
 			echo "<td style='padding-left:3%;'>" . $s->lastName . "</td>";
 			echo "<td style='padding-left:3%;'>" . $s->otherName . "</td>";
