@@ -89,7 +89,7 @@ include 'adminNav.php';
 	<th>ID</th>
 	<th style='padding-left:3%;'>Date Sent</th>
 	<th style='padding-left:3%;'>Type</th>
-	<th style='padding-left:3%;'> Sender ID</th>
+	<th style='padding-left:3%;'>Sender ID</th>
 	<th style='padding-left:3%;'>Notes</th>
 	</tr>
 
@@ -101,7 +101,7 @@ include 'adminNav.php';
 			echo "<td style='padding-left:3%;'>" . $s->dateSent . "</td>";
 			echo "<td style='padding-left:3%;'>" . $s->type . "</td>";
 			echo "<td style='padding-left:3%;'>" . $s->senderID . "</td>";
-			echo "<td style='padding-left:3%;'>" . $s->notes . "</td>";
+			echo "<td style='padding-left:3%;'>" . $s->adminNotes . "</td>";
 			echo "</tr>";
 		}
 
@@ -136,7 +136,7 @@ include 'adminNav.php';
 
 <div class="row">
 
-<div class="col-lg-10 col-lg-offset-1">
+<div class="col-lg-10" style='margin-left:5%;'>
 
 <h2>Newsletter Templates</h2>
 
@@ -162,7 +162,6 @@ include 'adminNav.php';
       </div>
 
 
-
       <div>
       <label class="control-label" for="subWinDate">Date Winner Will Be Announced: </label>
       <input class="form-control" placeholder='when winner will be announced; does not have to be in a specific form' id="subWinDate" type="text" name="subWinDate"/>
@@ -185,7 +184,51 @@ include 'adminNav.php';
 
       -->
 
+      <?php
 
+
+      if(isset($_POST["subSendContest"]))
+      {
+        //database connection
+        $conn1 = new Dbconnect;
+        $db1 = $conn1->getDb();
+
+        $win = $_POST['subWin'];
+        $eventName = $_POST['subEvent'];
+        $socialMediaURL = $_POST['subFB'];
+        $winDate = $_POST['subWinDate'];
+        $adminNotes = $_POST['subContestAdmin'];
+
+        $message = "Hi Point Subscribers! <br/><br/> Would you like to win " . $win . "? Reply to this email and share the " . $eventName . " on your Facebook/Twitter/Instagram publicly to show how excited you are. Link: <a href='" . $socialMediaURL . "'>" . $socialMediaURL . "</a>. Reply with the public link you've shared to be entered into this contest! Winner will be announced on " . $winDate . ".<br/><br/>Good luck!<br/><br/><a href='www.pointentertainmentto.com'>www.pointentertainmentto.com</a>";
+
+        ?>
+
+        <div>
+        <br/>
+        <br/>
+
+        <strong>Message To Be Sent</strong>
+        <br/>
+        <br/>
+
+        <?php echo $message; ?>
+
+
+        </div>
+
+        <br/>
+        <br/>
+        <p>There will be a link to confirm to send it</p>
+        <br/>
+        <br/>
+
+
+        <?php
+
+      }
+
+
+      ?>
 
 
  </form>
@@ -212,7 +255,7 @@ include 'adminNav.php';
 
        <div>
       <label class="control-label" for="subUpcomingAdmin">Admin Notes: </label>
-      <input class="form-control" placeholder='trying to promote Vinyl event because B2B at another club is the same day' id="subUpcomingAdmin" type="text" name="subUpcomingAdmin"/>
+      <input class="form-control" placeholder='promoting Vinyl B2B at another club same day' id="subUpcomingAdmin" type="text" name="subUpcomingAdmin"/>
       </div>
 
        <br/>
@@ -226,6 +269,24 @@ include 'adminNav.php';
 		4. send email
 
       -->
+      <?php
+
+
+      if(isset($_POST["sendUpcomingEvents"]))
+      {
+        //database connection
+        $conn1 = new Dbconnect;
+        $db1 = $conn1->getDb();
+
+        $numEvents = $_POST['subNumEvents'];
+        $featuredEvent = $_POST['subFeatured'];
+        $adminNotes = $_POST['subUpcomingAdmin'];
+
+
+      }
+
+
+      ?>
 
 
 
