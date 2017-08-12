@@ -38,7 +38,7 @@ include 'adminNav.php';
       </div>
 
       <div>
-      <label class="control-label" for="eventDate">Event Date (must be in format similar to "2017-08-26 22:00:00": </label>
+      <label class="control-label" for="eventDate">Event Date; must be in format similar to below: <br/>2017-08-26 22:00:00</label>
       <input class="form-control" id="eventDate" type="text" name="eventDate"/>
       </div>
 
@@ -57,14 +57,16 @@ include 'adminNav.php';
       <input class="form-control" id="eventVenue" type="text" name="eventVenue"/>
       </div>
 
+      <br/>
+
       <div class="form-group">
-      <label for="eventDescription">Description (please put br tag in between every paragraph): </label>
+      <label for="eventDescription">Description (please put br tag in between every paragraph - <a href='basicHTMLInfo.php' target="_blank">More Info</a>): </label>
       <textarea class="form-control" rows="5" id="eventDescription" name="eventDescription"></textarea>
       </div>
 
       <div class="form-group">
       <label for="eventCover">Cover: </label>
-      <textarea class="form-control" rows="5" id="eventCover" name="eventCover"></textarea>
+      <textarea class="form-control" rows="2" id="eventCover" name="eventCover"></textarea>
       </div>
 
       <label>Guestlist</label>
@@ -74,6 +76,9 @@ include 'adminNav.php';
       <div class="radio">
       <label><input type="radio" name ='eventGuestlist' value='no'>no</label>
       </div>
+
+
+      <br/>
 
       <!--<div>
       <label class="control-label" for="eventGuestlist">Guestlist (1 is yes, 0 is no): </label>
@@ -98,6 +103,7 @@ include 'adminNav.php';
       <br/>
 
       <input class="btn btn-primary" type="submit" value="Add Event" name="addEvent" id="addEvent" />
+       <br/>
 
     </form>
 
@@ -206,13 +212,13 @@ include 'adminNav.php';
 
 
 
-<table>
+<table style='width:100%;padding:5px;border-spacing:15px;''>
 	<tr>
   <th>Date</th>
-	<th style='padding-left:3%;'>Name</th>
-	<th style='padding-left:3%;'>URL</th>
-  <th style='padding-left:3%;'>Venue</th>
-  <th style='padding-left:3%;'>More Info</th>
+	<th>Name</th>
+	<th>URL</th>
+  <th>Venue</th>
+  <th>More Info</th>
 	</tr>
 
 	<?php
@@ -220,10 +226,10 @@ include 'adminNav.php';
 		{
 			echo "<tr>";
       echo "<td>" . $p->eventDate . "</td>";
-			echo "<td style='padding-left:3%;'>" . $p->name . "</td>";
-			echo "<td style='padding-left:3%;'><a href='" . $p->facebookURL . "' target='_blank'>" . "Link" . "</td>";
-      echo "<td style='padding-left:3%;'>" . $p->venue . "</td>";
-       echo "<td  style='padding-left:3%;'><a href='eventDetails.php?id=" . "{$p->id}'>" . "Details" . "</a></td>";
+			echo "<td>" . $p->name . "</td>";
+			echo "<td><a href='" . $p->facebookURL . "' target='_blank'>" . "Link" . "</td>";
+      echo "<td>" . $p->venue . "</td>";
+       echo "<td><a href='eventDetails.php?id=" . "{$p->id}'>" . "Details" . "</a></td>";
 			echo "</tr>";
 		}
 
@@ -237,7 +243,7 @@ include 'adminNav.php';
 </div><!--end of row for-->
 
 </div>
-2
+
 </div><!--end col lg 8 offset 2--><!--end partner Page div-->
 
 </div><!--end row-->
