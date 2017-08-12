@@ -26,7 +26,7 @@ include 'adminNav.php';
 <div class="row">
 
 
-<div class="col-lg-3 col-leg-offset-3" style='margin-left:5%;'>
+<div class="col-lg-2 col-leg-offset-3" style='margin-left:5%;'>
 
 <h2>Publish Event</h2>
 
@@ -94,7 +94,7 @@ include 'adminNav.php';
 </div><!--end div for add partner col-->
 
 
-<div class="col-lg-6" style='margin-left:5%;'>
+<div class="col-lg-8" style='margin-left:5%;'>
 
 <?php
 
