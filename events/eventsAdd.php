@@ -38,7 +38,7 @@ include 'adminNav.php';
       </div>
 
       <div>
-      <label class="control-label" for="eventDate">Event Date: </label>
+      <label class="control-label" for="eventDate">Event Date (must be in format similar to "2017-08-26 22:00:00": </label>
       <input class="form-control" id="eventDate" type="text" name="eventDate"/>
       </div>
 
@@ -58,7 +58,7 @@ include 'adminNav.php';
       </div>
 
       <div class="form-group">
-      <label for="eventDescription">Description: </label>
+      <label for="eventDescription">Description (please put br tag in between every paragraph): </label>
       <textarea class="form-control" rows="5" id="eventDescription" name="eventDescription"></textarea>
       </div>
 
@@ -67,17 +67,25 @@ include 'adminNav.php';
       <textarea class="form-control" rows="5" id="eventCover" name="eventCover"></textarea>
       </div>
 
-      <div>
+      <label>Guestlist</label>
+      <div class="radio">
+      <label><input type="radio" name='eventGuestlist' value='yes'>yes</label>
+      </div>
+      <div class="radio">
+      <label><input type="radio" name ='eventGuestlist' value='no'>no</label>
+      </div>
+
+      <!--<div>
       <label class="control-label" for="eventGuestlist">Guestlist (1 is yes, 0 is no): </label>
       <input class="form-control" id="eventGuestlist" type="text" name="eventGuestlist"/>
-      </div>
+      </div>-->
 
       <label>Status</label>
       <div class="radio">
-      <label><input type="radio" name="draft">Save As Draft</label>
+      <label><input type="radio" name='status' value="draft">Save As Draft</label>
       </div>
       <div class="radio">
-      <label><input type="radio" name="future">Publish</label>
+      <label><input type="radio" name ='status' value="future">Publish</label>
       </div>
 
       <div>
@@ -114,7 +122,7 @@ include 'adminNav.php';
         $eventDescription = $_POST['eventDescription'];
         $eventCover = $_POST['eventCover'];
         $eventGuestlist = $_POST['eventGuestlist'];
-        $eventStatus = $_POST['radio'];
+        $eventStatus = $_POST['status'];
   
         $type = pathinfo($_FILES["eventImage"]["tmp_name"],PATHINFO_EXTENSION);
         $image = file_get_contents($_FILES["eventImage"]["tmp_name"]);
@@ -125,10 +133,12 @@ include 'adminNav.php';
 
     
     //database query
-        $query1 = "INSERT INTO event (name, date, facebookURL, ticketsURL, venue, description, cover, guestlist, status, image, type) VALUES (:eventName, :eventDate, :eventFacebook, :eventTickets, :eventVenue, :eventDescription, :eventGuestlist, :eventStatus, :image, :type)";
+        $query1 = "INSERT INTO event (name, eventDate, facebookURL, ticketsURL, venue, description, cover, guestlist, status, image, type, imgShape, showOnPrevious) VALUES (:eventName, :eventDate, :eventFacebook, :eventTickets, :eventVenue, :eventDescription, :eventCover, :eventGuestlist, :eventStatus, :image, :type, 'coverPhoto', 'no')";
+
+
 
       $statement1 = $db1->prepare($query1);
-
+      
    
 
       $statement1->bindValue(':eventName', $eventName, PDO::PARAM_STR);
@@ -137,17 +147,37 @@ include 'adminNav.php';
       $statement1->bindValue(':eventTickets', $eventTickets, PDO::PARAM_STR);
       $statement1->bindValue(':eventVenue', $eventVenue, PDO::PARAM_STR);
       $statement1->bindValue(':eventDescription', $eventDescription, PDO::PARAM_STR);
+      $statement1->bindValue(':eventCover', $eventCover, PDO::PARAM_STR);
       $statement1->bindValue(':eventStatus', $eventStatus, PDO::PARAM_STR);
-      $statement1->bindValue(':eventGuestlist', $eventGuestlist, PDO::PARAM_INT);
+      $statement1->bindValue(':eventGuestlist', $eventGuestlist, PDO::PARAM_STR);
      
       $statement1->bindValue(':type', $type, PDO::PARAM_LOB);
       $statement1->bindValue(':image', $image, PDO::PARAM_LOB);
+
+      
 
       $statement1->execute();
 
       echo "Event Added.";
 
       $conn1=null;
+
+//look into adding financial template at the same time
+  /*      $conn2 = new Dbconnect;
+        $db2 = $conn2->getDb();
+
+        $query2 = "INSERT INTO financials (eventName, eventDate, eventID, INTLFlight, INTLHotel, INTLFood, INTLTransit, INTLPay, INTLBookingFee, INTLExtra, alcohol, food, rider, DJ1, DJ2, DJ3, DJ4, DJ5, DJ6, DJ7, DJ8, DJ9, DJ0, DJ1Pay, DJ2Pay, DJ3Pay, DJ4Pay, DJ5Pay, DJ6Pay, DJ7Pay, DJ8Pay, DJ9Pay, DJ0Pay, promo1, promo2, promo3, promo4, promo5, promo6, promo7, promo8, promo1Pay, promo2Pay, promo3Pay, promo4Pay, promo5Pay, promo6Pay, promo7Pay, promo8Pay, assistantPay, doorperson, security, decorations, visuals, photographer, flyerDesign, flyerPrinting, extraCosts1, extraCosts2, discountPrice1, discountPrice2, discountPrice3, attendees, revenue, startingTicket, endingTicket, totalComps) VALUES (:eventName, :eventDate, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, Null, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 100, NULL, NULL, NULL, NULL, NULL, 50, 50, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)";
+
+        $statement2 = $db2->prepare($query2);
+
+        $statement2->bindValue(':eventName', $eventName, PDO::PARAM_STR);
+        $statement2->bindValue(':eventDate', $eventDate, PDO::PARAM_STR);
+
+        $statement2->execute();
+        echo "Financial Template added";
+        $conn2 = null;*/
+
+
     }
     ?>
 
@@ -165,7 +195,7 @@ include 'adminNav.php';
 
     $dbconn = new Dbconnect;
     $db = $dbconn->getDb();
-    $query = "SELECT * FROM event WHERE status='future' ORDER BY date DESC";
+    $query = "SELECT * FROM event WHERE status='future' ORDER BY eventDate DESC";
     $statement = $db->prepare($query);
     $statement->execute();
     $partners = $statement->fetchAll(PDO::FETCH_OBJ);
@@ -189,7 +219,7 @@ include 'adminNav.php';
 		foreach($partners as $p)
 		{
 			echo "<tr>";
-      echo "<td>" . $p->date . "</td>";
+      echo "<td>" . $p->eventDate . "</td>";
 			echo "<td style='padding-left:3%;'>" . $p->name . "</td>";
 			echo "<td style='padding-left:3%;'><a href='" . $p->facebookURL . "' target='_blank'>" . "Link" . "</td>";
       echo "<td style='padding-left:3%;'>" . $p->venue . "</td>";
@@ -206,8 +236,8 @@ include 'adminNav.php';
 </div><!--end div for partner list col-->
 </div><!--end of row for-->
 
-
-
+</div>
+2
 </div><!--end col lg 8 offset 2--><!--end partner Page div-->
 
 </div><!--end row-->

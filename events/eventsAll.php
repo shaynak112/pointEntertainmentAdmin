@@ -30,7 +30,7 @@ include 'adminNav.php';
 
     $dbconn = new Dbconnect;
     $db = $dbconn->getDb();
-    $query = "SELECT * FROM event ORDER BY date DESC";
+    $query = "SELECT * FROM event ORDER BY eventDate DESC";
     $statement = $db->prepare($query);
     $statement->execute();
     $events = $statement->fetchAll(PDO::FETCH_OBJ);
@@ -53,7 +53,7 @@ include 'adminNav.php';
 		{
 			echo "<tr>";
       echo "<td style='width:40%;'>" . $p->name . "</td>";
-			echo "<td style='padding-left:2%;'>" . $p->date . "</td>";
+			echo "<td style='padding-left:2%;'>" . $p->eventDate . "</td>";
       echo "<td style='padding-left:2%;'>" . $p->venue . "</td>";
 			echo "<td style='padding-left:2%;'><a href='" . $p->facebookURL . "' target='_blank'>" . "Link" . "</td>";
       echo "<td style='padding-left:2%;'>" . $p->status . "</td>";
