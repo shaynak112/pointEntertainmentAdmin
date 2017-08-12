@@ -33,7 +33,7 @@ include 'adminNav.php';
 
 <h1>Subscribers</h1>
 
-<table>
+<table style='width:100%;padding:5px;border-spacing:15px;'>
 	<tr>
 	<th>First Name</th>
 	<th>Last Name</th>
@@ -80,17 +80,17 @@ include 'adminNav.php';
 
 ?>
 
-<div id='newslettersSentList' style='margin-left:5%;'>
+<div id='newslettersSentList'>
 
 <h1>Newsletters Sent</h1>
 
-<table>
+<table style='width:100%;padding:5px;border-spacing:15px;'>
 	<tr>
 	<th>ID</th>
-	<th style='padding-left:3%;'>Date Sent</th>
-	<th style='padding-left:3%;'>Type</th>
-	<th style='padding-left:3%;'>Sender ID</th>
-	<th style='padding-left:3%;'>Notes</th>
+	<th style='margin-left:7%;'>Date Sent</th>
+	<th style='margin-left:7%;'>Type</th>
+	<th style='margin-left:7%;'>SenderID</th>
+	<th style='margin-left:7%;'>Notes</th>
 	</tr>
 
 	<?php
@@ -98,10 +98,10 @@ include 'adminNav.php';
 		{
 			echo "<tr>";
 			echo "<td>" . $s->id . "</td>";
-			echo "<td style='padding-left:3%;'>" . $s->dateSent . "</td>";
-			echo "<td style='padding-left:3%;'>" . $s->type . "</td>";
-			echo "<td style='padding-left:3%;'>" . $s->senderID . "</td>";
-			echo "<td style='padding-left:3%;'>" . $s->adminNotes . "</td>";
+			echo "<td style='margin-left:7%;'>" . $s->dateSent . "</td>";
+			echo "<td style='margin-left:7%;'>" . $s->type . "</td>";
+			echo "<td style='margin-left:7%;'>" . $s->senderID . "</td>";
+			echo "<td style='margin-left:7%;'>" . $s->adminNotes . "</td>";
 			echo "</tr>";
 		}
 
@@ -123,7 +123,7 @@ include 'adminNav.php';
 <br/>
 <br/>
 
-<div id='subscriberLine' style='width:100%;height:15px;background-color:#337ab7;margin-left:0px;'>
+<div id='subscriberLine' style='width:100%;height:15px;background-color:#605CA8;margin-left:0px;'>
 </div>
 
 <br/>
