@@ -13,7 +13,7 @@ include 'adminNav.php';
 
 <div class="row">
 
-<div class="col-lg-8 col-lg-offset-2" style='margin-left:10%;'>
+<div class="col-lg-4" style='margin-left:5%;'>
 
 
 <?php
@@ -27,9 +27,23 @@ include 'adminNav.php';
     $statement->execute();
     $oneContact = $statement->fetch();
 
+    $secondName=$oneContact['otherName'];
+
+    if(!$secondName)
+    {
+        $secondName="";
+    }
+    else
+    {
+        $secondName="(" . $oneContact['otherName'] . ")";
+    }
+
 ?>
 
-<h1><?php echo $oneContact['firstName'] . " " . $oneContact['lastName'] . " (" . $oneContact['otherName'] . ")"; ?></h1>
+
+
+
+<h1><?php echo $oneContact['firstName'] . " " . $oneContact['lastName'] . " " . $secondName; ?></h1>
 
 <h2>Contact Information</h2>
 
@@ -49,6 +63,22 @@ include 'adminNav.php';
 <div><?php echo $oneContact['email2']; ?></div>
 </div>
 
+<br/>
+
+<div>
+<div><strong>Facebook</strong><div>
+<?php
+    echo "<a target='_blank' href=" . $oneContact['FBProfile'] . ">" . "Profile: " . $oneContact['FBProfile'] . "</a>";
+?>
+</div>
+
+<br/>
+
+<div>
+<strong>Other General</strong>
+<div>ID: <?php echo $oneContact['id']; ?></div>
+<div>username: <?php echo $oneContact['username']; ?></div>
+</div>
 
 <br/>
 
@@ -56,7 +86,54 @@ include 'adminNav.php';
 
 <?php
 
-       if($row['role']='DJ')
+    //test for DJ
+    $dbconn2 = new Dbconnect;
+    $db2 = $dbconn2->getDb();
+    $id2 = $_GET['id'];
+    $query2 = 'SELECT * FROM login WHERE id = ' . $id2 . ' AND role = "DJ" ';
+    $statement2 = $db2->prepare($query2);
+    $statement2->bindValue(':id', $id2, PDO::PARAM_INT);
+    $statement2->execute();
+    $DJcontact = $statement2->fetch();
+
+    
+
+    if($DJcontact)
+    {
+        echo "<strong>DJ Info</strong>";
+        echo "<div>Genre: " . $DJcontact['DJGenre'] . "</div>";
+        echo "<div>Min (or firm) Price: " . $DJcontact['DJPriceMin'] . "</div>";
+        echo "<div>Max Price: " . $DJcontact['DJPriceMax'] . "</div>";
+    }
+
+?>
+
+
+<?php
+
+    //test for promoter
+    $dbconn3 = new Dbconnect;
+    $db3 = $dbconn3->getDb();
+    $id3 = $_GET['id'];
+    $query3 = 'SELECT * FROM login WHERE id = ' . $id3 . ' AND role = "promoter" ';
+    $statement3 = $db3->prepare($query3);
+    $statement3->bindValue(':id', $id3, PDO::PARAM_INT);
+    $statement3->execute();
+    $promoContact = $statement3->fetch();
+
+    if($promoContact)
+    {
+        echo "<strong>Promoter Info</strong>";
+        echo "<div>Price: " . $promoContact['promoPrice'] . "</div>";
+        echo "<div>Policy: " . $promoContact['promoPolicy'] . "</div>";
+    }
+
+
+/*
+$myRole=$oneContact['role'];
+$correctRole=($row['role']);
+
+       if($myRole=$correctRole)
     {
         ?>
         <strong>DJ Info</strong>
@@ -66,7 +143,11 @@ include 'adminNav.php';
         echo "<div>Max Price: " . $oneContact['DJPriceMax'] . "</div>";
 
     }
-
+    else
+    {
+        echo "<br/>";
+    }
+*/
 
 /*Idea:
     if(point.role='DJ')
@@ -79,31 +160,44 @@ include 'adminNav.php';
 
 ?>
 
+<br/>
+<br/>
+<br/>
+
+<p>Spot to update info - coming soon!</p>
+
+
 </div>
 
 <br/>
 
-<div>
-<strong>Facebook</strong>
-<div>
-<?php
-    echo "<a target='_blank' href=" . $oneContact['FBProfile'] . ">" . "Profile: " . $oneContact['FBProfile'] . "</a>";
-?>
+
 </div>
 </div>
 
 <br/>
 <br/>
 
-<div style='width:50%;'><strong>
-Placeholder image</strong>
-<img src='ben.jpg' style='width:80%;margin-left:0%;'/>
-</div>
+
 
 
 
 
 </div><!--first col-lg -->
+
+<div class="col-lg-6" style='margin-left:5%;'>
+
+<div style='width:60%;margin-top:50px;'>
+<br/>
+<br/>
+<?php echo "<img src='userPicViewerImg.php?id=" . $oneContact['id'] . "' style='width:80%;'>"; ?>
+
+</div>
+
+</div><!--end col-lg-4-->
+
+
+
 </div><!--row-->
 </div><!--end content-wrapper-->
 
